@@ -1,23 +1,15 @@
-import logo from './logo.png';
+import React from "react"
 import './App.css';
+import NavBar from './components/NavBar';
+import ItemListContainer from './components/ItemListContainer';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-        Tienda Online en Construcción.
-        </p>
-        <a
-          className="App-link"
-          href="https://www.instagram.com/kiwi.boards/?hl=es-la"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Visita Nuestras Redes
-        </a>
-      </header>
+
+    <div>
+     <NavBar/>
+    <ItemListContainer/>
     </div>
   );
 }
