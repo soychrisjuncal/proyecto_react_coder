@@ -10,7 +10,7 @@ function App() {
     <div>
      <NavBar/>
     <ItemListContainer/>
-    <Footer/>
+    
     </div>
   );
 }
