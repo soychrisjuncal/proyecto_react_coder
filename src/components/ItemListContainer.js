@@ -1,12 +1,13 @@
 import React from "react"
-import logo from '../logo.png';
+import logo from '../assets/logo.png';
 
 
-const ItemListContainer = () => {
+const ItemListContainer = (props) => {
 
 return (
 <div className="App">
       <header className="App-header">
+        <h1> {props.bienvenida} </h1>
         <img src={logo} className="App-logo" alt="logo" />
         <p>
         Tienda Online en Construcción.

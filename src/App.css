@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  background-image: url('./fondo.png');
+  background-image: url('./assets/fondo.png');
 background-size: cover;
   min-height: 100vh;
   display: flex;
@@ -18,9 +18,6 @@ background-size: cover;
 
 
 
-.App-header {
-
-}
 
 .App-link {
   color: black;

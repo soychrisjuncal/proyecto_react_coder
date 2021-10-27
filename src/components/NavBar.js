@@ -3,7 +3,7 @@ import React from "react";
 
 import { Container,Navbar,Nav, NavDropdown } from "react-bootstrap";
 import CartWidget from './CartWidget'
-import './NavBar.css';
+import '../css/NavBar.css';
 
 
 

@@ -1,5 +1,5 @@
 import React from "react";
-import './CartWidget.css'
+import '../css/CartWidget.css';
 
 
 

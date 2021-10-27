@@ -1,0 +1,13 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.pepe {
+    background-color: #abbf27;
+    text-align: center;
+}
+
+ul > li {
+    list-style: none;
+}
