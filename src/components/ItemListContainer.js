@@ -1,14 +1,17 @@
 import React from "react"
 import logo from '../assets/logo.png';
+import '../css/ItemListContainer.css'
+import ItemCount from "./ItemCount";
 
 
-const ItemListContainer = (props) => {
+const ItemListContainer = ({bienvenida, botonRedes}) => {
 
 return (
 <div className="App">
-      <header className="App-header">
-        <h1> {props.bienvenida} </h1>
-        <img src={logo} className="App-logo" alt="logo" />
+      <header className="">
+        <h1 className="title"> {bienvenida} </h1>
+        {/* <img src={logo} className="App-logo" alt="logo" /> */}
+        <ItemCount title="Desafio Clase 5" titleStock="Cantidad de Stock: "/>
         <p>
         Tienda Online en Construcción.
         </p>
@@ -18,7 +21,7 @@ return (
           target="_blank"
           rel="noopener noreferrer"
         >
-          Visita Nuestras Redes
+          {botonRedes}
         </a>
       </header>
     </div>

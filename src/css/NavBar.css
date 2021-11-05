@@ -1,3 +1,21 @@
 .pepe {
-    background-color: #abbf27;
+    background-color: #e0e0e0;
+}
+
+#navbar-brand {
+    font-size: 3rem;
+    padding: 0.1rem 0.1rem;
+}
+
+
+
+.centrar>div>a{
+    font-size: 2rem;
+}
+
+
+
+
+.centrar>div>div>a{
+    font-size: 2rem;
 }
