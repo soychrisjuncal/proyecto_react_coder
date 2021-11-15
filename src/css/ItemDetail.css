@@ -1,0 +1,23 @@
+.contenedor-padre{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: center;
+    margin: 100px 0;
+}
+
+.item-info-producto {
+align-self: center;
+   
+}
+
+.titulo {
+    font-size: 50px;
+}
+.description{
+    font-size: 25px;
+}
+
+.precio{
+    font-size: 30px;
+}

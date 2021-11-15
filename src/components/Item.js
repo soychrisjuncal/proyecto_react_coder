@@ -4,7 +4,7 @@ import '../css/Item.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-function Item({img,img2,img3,title,description,stock,listPrice,offerPrice,cuotas}) {
+function Item({img,img2,img3,title,description,listPrice,offerPrice,cuotas}) {
     return (
        <>
 
@@ -39,6 +39,7 @@ function Item({img,img2,img3,title,description,stock,listPrice,offerPrice,cuotas
                 <h4>
                     <a href="#">{title}</a>
                 </h4>
+                
                 <div>{description}</div>
                 <div className="producto_precio">
                     <p> <del>${listPrice}</del> ${offerPrice}</p>

@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import '../css/ItemCount.css'
 
-
-
-const ItemCount = ({ title, titleStock }) => {
+const ItemCount = ({ titleStock }) => {
     const [stock, setStock] = useState(4);
     const [count, setCount] = useState(1);
     const [state, setState] = useState(true);
@@ -30,7 +28,7 @@ const ItemCount = ({ title, titleStock }) => {
         <>
       <div className="fondo">
         
-        <h1>{title}</h1>
+       
         <input
           id="resta"
           type="submit"
@@ -41,7 +39,12 @@ const ItemCount = ({ title, titleStock }) => {
           onClick={() => onRest()}
         />
   
-        <input id="muestra" type="text" name="inputname" value={count} readOnly />
+        <input 
+        id="muestra" 
+        type="text" 
+        name="inputname" 
+        value={count} 
+        readOnly />
   
         <input
           id="suma"
