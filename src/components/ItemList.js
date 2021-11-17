@@ -8,10 +8,10 @@ const ItemList = ({productos}) => {
  
     return (
        
-       <div className="d-flex flex-row w-100 justify-content-center">
+       <div className="flex-wrap d-flex flex-row w-100 justify-content-center">
 
     {productos.map((dato)=>
-         <div key={dato.id} className="d-flex justify-content-center">
+         <div key={dato.id} className="col-4 d-flex justify-content-center">
             <Item id={dato.id} img={dato.img} img2={dato.img2} img3={dato.img3} title={dato.title} description={dato.description} stock={dato.stock} listPrice={dato.listPrice} offerPrice={dato.offerPrice} cuotas={dato.cuotas} />
          </div>  
          )}

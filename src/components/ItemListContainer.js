@@ -4,12 +4,14 @@ import ItemList from './ItemList';
 import loader from '../assets/load.gif';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { productos } from "../utils/productos";
+import { useParams } from "react-router";
 
 
 
 const ItemListContainer = ({bienvenida, botonRedes}) => {
   
   const [datos, setArrayDatos] = useState([])
+  const { idCategory } = useParams()
   useEffect(()=>{
 
    
@@ -34,13 +36,12 @@ if (is_ok){
 
 };
 
-inventario(0, console.log('Procesando Inventario...'))
+inventario(2000, console.log('Procesando Inventario...'))
 
-.then(() =>  inventario(1000,console.log(productos[0])))
-.then(() => inventario(1000,console.log(productos[1])))
-.then(() => inventario(1000,console.log(productos[2])))
-
-.then(() => { inventario(1000,setArrayDatos(productos))
+.then(() => { inventario(2000,setArrayDatos(productos.filter(item=>{
+  if (idCategory === undefined) return item;
+  return item.categoryId === parseInt(idCategory)
+})))
 console.log(productos)
 })
 
@@ -52,7 +53,7 @@ console.log("Proceso Finalizado")
 
 })
 
-},[]);
+},[datos]);
 
 return (
 <div className="">
@@ -75,12 +76,8 @@ return (
         <p>
         Tienda Online en Construcción.
         </p>
-        <a
-          className="App-link"
-          href="https://www.instagram.com/kiwi.boards/?hl=es-la"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a className="App-link" href="https://www.instagram.com/kiwi.boards/?hl=es-la" target="_blank"
+          rel="noopener noreferrer">
           {botonRedes}
         </a>
      

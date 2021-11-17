@@ -1,8 +1,9 @@
 import React from 'react'
 import ItemCount from './ItemCount'
+import Item from './Item'
 import '../css/ItemDetail.css'
 
-const ItemDetail = ({img,title,description,listPrice,offerPrice,cuotas}) => {
+const ItemDetail = ({id, img,title,description,listPrice,offerPrice,cuotas}) => {
     return (
     <>
     <div className="contenedor-padre">
