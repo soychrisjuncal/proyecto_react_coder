@@ -1,34 +1,32 @@
-import React, { useState } from 'react';
-import '../css/ItemCount.css'
+import React, { useState } from "react";
+import "../css/ItemCount.css";
 
-const ItemCount = ({ titleStock }) => {
-    const [stock, setStock] = useState(4);
-    const [count, setCount] = useState(1);
-    const [state, setState] = useState(true);
-  
-    const onAdd = () => {
-      if (stock === 0) {
-        setState(true);
-      } else {
-        setState(true);
-        setCount(count + 1);
-        setStock(stock - 1);
-      }
-    };
-  
-    const onRest = () => {
-      if (stock >= 4 && count <= 1) {
-        setState(true);
-      } else {
-        setCount(count - 1);
-        setStock(stock + 1);
-      }
-    };
-    return (
-        <>
+const ItemCount = ({ titleStock, onAddCart }) => {
+  const [stock, setStock] = useState(4);
+  const [count, setCount] = useState(1);
+  const [state, setState] = useState(true);
+
+  const increment = () => {
+    if (stock === 0) {
+      setState(true);
+    } else {
+      setState(true);
+      setCount(count + 1);
+      setStock(stock - 1);
+    }
+  };
+
+  const decrement = () => {
+    if (stock >= 5 && count <= 1) {
+      setState(true);
+    } else {
+      setCount(count - 1);
+      setStock(stock + 1);
+    }
+  };
+  return (
+    <>
       <div className="fondo">
-        
-       
         <input
           id="resta"
           type="submit"
@@ -36,16 +34,17 @@ const ItemCount = ({ titleStock }) => {
           value="-"
           disabled={!state}
           readOnly
-          onClick={() => onRest()}
+          onClick={() => decrement()}
         />
-  
-        <input 
-        id="muestra" 
-        type="text" 
-        name="inputname" 
-        value={count} 
-        readOnly />
-  
+
+        <input
+          id="muestra"
+          type="text"
+          name="inputname"
+          value={count}
+          readOnly
+        />
+
         <input
           id="suma"
           type="submit"
@@ -53,21 +52,32 @@ const ItemCount = ({ titleStock }) => {
           value="+"
           disabled={!state}
           readOnly
-          onClick={() => onAdd()}
+          onClick={() => increment()}
         />
         <p>
           {titleStock} {stock}
         </p>
-        <input
-          id="hora"
-          type="submit"
-          name="inputname"
-          value="Agregar al Carrito"
-          readOnly
-        />
-      </div>
-      </>
-    );
-  }
 
-  export default ItemCount
+        {count > 0 ? (
+          <input
+            id="btnAdd"
+            type="submit"
+            name="inputname"
+            value="Agregar al Carrito"
+            onClick={() => onAddCart(count)}
+          />
+        ) : (
+          <input
+            id="btnAdd"
+            type="submit"
+            name="inputname"
+            value="Agregar al Carrito"
+            disabled
+          />
+        )}
+      </div>
+    </>
+  );
+};
+
+export default ItemCount;
