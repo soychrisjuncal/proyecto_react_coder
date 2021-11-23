@@ -42,7 +42,10 @@ const NavBar = () => {
             <Nav.Link href="#link">Contacto</Nav.Link>
           </Nav>
         </Navbar.Collapse>
-        <CartWidget />
+
+        <Link to="/cart">
+          <CartWidget />
+        </Link>
       </Container>
     </Navbar>
   );

@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "../css/ItemCount.css";
+import { CartContext } from "./CartContext";
 
 const ItemCount = ({ titleStock, onAddCart }) => {
   const [stock, setStock] = useState(4);
   const [count, setCount] = useState(1);
   const [state, setState] = useState(true);
+  const test = useContext(CartContext);
+  console.log("itemcount:", test);
 
   const increment = () => {
     if (stock === 0) {
