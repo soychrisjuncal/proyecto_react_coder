@@ -1,6 +1,22 @@
-.error {
-    width: 50%;
-    text-align: center;
-    border-radius: 40px;
+.imgItem {
+    width: 5%;
+
+   
     margin: 20px;
+}
+
+.btnVaciar {
+    padding: 0 1rem;
+}
+
+.btnBorrar {
+    height: 7vh;
+    padding: 0 1rem;
+    align-self: center;
+}
+
+.titleItem {
+    
+    padding: 2rem;
+    align-self: center;
 }

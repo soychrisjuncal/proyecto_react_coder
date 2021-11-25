@@ -23,7 +23,7 @@ const ItemListContainer = ({ bienvenida, botonRedes }) => {
       .then((result) => setArrayDatos(result))
 
       .catch((err) => console.log(err));
-  }, [datos]);
+  }, [idCategory]);
 
   return (
     <div className="">
