@@ -28,10 +28,49 @@ const CartContextProvider = ({ children }) => {
     let result = cartList.filter((item) => item.idItem != id);
     setCartList(result);
   };
+
+  const totalItems = (idItem) => {
+    let index = cartList.map((item) => item.idItem).indexOf(idItem);
+    return cartList[index].offerItem * cartList[index].qtyItem;
+  };
+
+  const subTotal = () => {
+    let total = cartList.map((item) => totalItems(item.idItem));
+    return total.reduce(
+      (previusValue, currentValue) => previusValue + currentValue
+    );
+  };
+
+  const calcIva = () => {
+    return subTotal() * 0.21;
+  };
+
+  const calcTotal = () => {
+    return (subTotal() + calcIva()).toFixed(2);
+  };
+
+  const calcItemCart = () => {
+    let qtys = cartList.map((item) => item.qtyItem);
+    return qtys.reduce(
+      (previusValue, currentValue) => previusValue + currentValue,
+      0
+    );
+  };
+
   return (
     <>
       <CartContext.Provider
-        value={{ cartList, addToCart, removeAll, deleteItem }}
+        value={{
+          cartList,
+          addToCart,
+          removeAll,
+          deleteItem,
+          totalItems,
+          subTotal,
+          calcIva,
+          calcTotal,
+          calcItemCart,
+        }}
       >
         {children}
       </CartContext.Provider>
