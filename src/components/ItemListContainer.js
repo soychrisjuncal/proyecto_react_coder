@@ -3,9 +3,9 @@ import "../css/ItemListContainer.css";
 import ItemList from "./ItemList";
 import loader from "../assets/load.gif";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { productos } from "../utils/productos";
+
 import { useParams } from "react-router";
-import inventario from "../utils/inventario";
+import { firestoreFetch } from "../utils/firestoreFetch";
 
 const ItemListContainer = ({ bienvenida, botonRedes }) => {
   const [datos, setArrayDatos] = useState([]);
@@ -13,22 +13,14 @@ const ItemListContainer = ({ bienvenida, botonRedes }) => {
   const { idCategory } = useParams();
 
   useEffect(() => {
-    inventario(
-      2000,
-      productos.filter((item) => {
-        if (idCategory === undefined) return item;
-        return item.categoryId === parseInt(idCategory);
-      })
-    )
-      .then((result) => setArrayDatos(result))
-
+    firestoreFetch(idCategory)
+      .then((res) => setArrayDatos(res))
       .catch((err) => console.log(err));
   }, [idCategory]);
 
   return (
     <div className="">
       <h1 className="title"> {bienvenida} </h1>
-      {/* <img src={logo} className="App-logo" alt="logo" /> */}
       {datos.length > 0 ? (
         <div>
           <ItemList productos={datos} />

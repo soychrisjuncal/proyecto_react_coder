@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import "../css/ItemCount.css";
 import { CartContext } from "./CartContext";
 
-const ItemCount = ({ titleStock, onAddCart }) => {
+const ItemCount = ({ onAddCart }) => {
   const [stock, setStock] = useState(4);
   const [count, setCount] = useState(1);
   const [state, setState] = useState(true);
@@ -57,9 +57,7 @@ const ItemCount = ({ titleStock, onAddCart }) => {
           readOnly
           onClick={() => increment()}
         />
-        <p>
-          {titleStock} {stock}
-        </p>
+        <p>Stock Disponible: {stock}</p>
 
         {count > 0 ? (
           <input
