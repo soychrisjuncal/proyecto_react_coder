@@ -14,31 +14,12 @@ const ItemDetailContainer = ({ detalle }) => {
 
   useEffect(() => {
     firestoreDetailFetch(idItem)
-      .then((res) => setDatos(res))
+      .then((res) => {
+        setDatos(res);
+        console.log(res);
+      })
       .catch((err) => console.log(err));
   }, [idItem]);
-
-  // getItem(2000, console.log("Procesando getItem..."))
-  //   .then(() => {
-  //     getItem(
-  //       2000,
-  //       setDatos(
-  //         productos.filter((item) => {
-  //           if (idItem === undefined) return item;
-  //           return item.id === parseInt(idItem);
-  //         })
-  //       )
-  //     );
-  //     console.log(productos.filter((item) => item.id === parseInt(idItem)));
-  //   })
-
-  //   .catch(() => {
-  //     console.log("HAY UN PROBLEMA AL CARGAR");
-  //   })
-  //   .finally(() => {
-  //     console.log("Proceso Finalizado");
-  //   });
-  // }, []);
 
   return (
     <div>
@@ -46,11 +27,13 @@ const ItemDetailContainer = ({ detalle }) => {
 
       <div>
         <ItemDetail
+          id={datos.id}
           img={datos.img}
           title={datos.title}
           description={datos.description}
           listPrice={datos.listPrice}
           offerPrice={datos.offerPrice}
+          stock={datos.stock}
           cuotas={datos.cuotas}
         />
       </div>

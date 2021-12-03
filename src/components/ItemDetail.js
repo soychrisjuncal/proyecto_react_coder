@@ -11,15 +11,18 @@ const ItemDetail = ({
   description,
   listPrice,
   offerPrice,
+  stock,
   cuotas,
 }) => {
   const [itemCount, setItemCount] = useState(0);
   const test = useContext(CartContext);
 
-  const onAddCart = (qty) => {
+  const onAddCart = (qty, reStock) => {
     alert("You have selected " + qty + " items.");
     setItemCount(qty);
-    test.addToCart(id, img, title, offerPrice, qty);
+    reStock = parseInt(stock - qty);
+    console.log(stock);
+    test.addToCart(id, img, title, offerPrice, stock, qty);
   };
   return (
     <>
@@ -41,7 +44,7 @@ const ItemDetail = ({
           </div>
           <div>
             {itemCount === 0 ? (
-              <ItemCount onAddCart={onAddCart} />
+              <ItemCount stock={4} onAddCart={onAddCart} />
             ) : (
               <Link to="/cart">
                 {" "}

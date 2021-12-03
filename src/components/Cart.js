@@ -2,13 +2,59 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import "../css/Cart.css";
 import { CartContext } from "./CartContext";
+import {
+  collection,
+  doc,
+  setDoc,
+  updateDoc,
+  increment,
+} from "firebase/firestore";
+import db from "../utils/firebaseConfig";
 
-const Cart = ({ id, img, title, offerPrice, qty, children }) => {
+const Cart = () => {
   const test = useContext(CartContext);
 
-  console.log("cart", test);
-  console.log(test.cartList);
-  console.log(test.cartList.imgItem);
+  const createOrder = () => {
+    let order = {
+      buyer: {
+        name: "Admin",
+        email: "admin@admin.com.ar",
+        phone: "123456789",
+      },
+      item: test.cartList.map((item) => ({
+        id: item.idItem,
+        title: item.titleItem,
+        price: item.offerItem,
+        stock: item.stockItem,
+        qty: item.qtyItem,
+      })),
+      total: parseFloat(test.calcTotal()),
+    };
+    console.log(order);
+
+    const orderInFireS = async () => {
+      const newOrderRef = doc(collection(db, "orders"));
+      await setDoc(newOrderRef, order);
+      return newOrderRef;
+    };
+
+    orderInFireS()
+      .then((res) => alert(`Compra Confirmada! Su id de compra es: ${res.id}`))
+      .catch((err) => console.log(err));
+
+    test.cartList.forEach(async (item) => {
+      const itemRef = doc(db, "productos", item.idItem);
+      await updateDoc(itemRef, {
+        stock: increment(-item.qtyItem),
+      });
+    });
+
+    test.removeAll();
+  };
+
+  // console.log("cart", test);
+  // console.log(test.cartList);
+  // console.log(test.cartList.imgItem);
 
   return (
     <>
@@ -51,6 +97,9 @@ const Cart = ({ id, img, title, offerPrice, qty, children }) => {
               <h5 className="p-3 text-left">Subtotal: {test.subTotal()}</h5>
               <h5 className="p-3 text-left">IVA 21%: {test.calcIva()}</h5>
               <h3 className="p-3 text-left">TOTAL: {test.calcTotal()}</h3>
+              <button onClick={createOrder} className="btn-dark btnConfirmar">
+                Confirmar Compra
+              </button>
             </div>
           )}
         </div>

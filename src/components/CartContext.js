@@ -4,20 +4,24 @@ export const CartContext = createContext();
 const CartContextProvider = ({ children }) => {
   const [cartList, setCartList] = useState([]);
 
-  const addToCart = (id, img, title, offerPrice, qty) => {
+  const addToCart = (id, img, title, offerPrice, stock, qty) => {
     let found = cartList.find((product) => product.idItem === id);
-    found === undefined
-      ? setCartList([
-          ...cartList,
-          {
-            idItem: id,
-            imgItem: img,
-            titleItem: title,
-            offerItem: offerPrice,
-            qtyItem: qty,
-          },
-        ])
-      : (found.qtyItem += qty);
+    if (found === undefined) {
+      setCartList([
+        ...cartList,
+        {
+          idItem: id,
+          imgItem: img,
+          titleItem: title,
+          offerItem: offerPrice,
+          stockItem: stock,
+          qtyItem: qty,
+        },
+      ]);
+    } else {
+      found.qtyItem += qty;
+      setCartList([...cartList]);
+    }
   };
 
   const removeAll = () => {
@@ -36,17 +40,19 @@ const CartContextProvider = ({ children }) => {
 
   const subTotal = () => {
     let total = cartList.map((item) => totalItems(item.idItem));
-    return total.reduce(
-      (previusValue, currentValue) => previusValue + currentValue
+    let totalReduce = total.reduce((previusValue, currentValue) =>
+      parseFloat(previusValue + currentValue)
     );
+    totalReduce.toFixed(1);
+    return totalReduce;
   };
 
   const calcIva = () => {
-    return subTotal() * 0.21;
+    return (subTotal() * 0.21).toFixed(2);
   };
 
   const calcTotal = () => {
-    return (subTotal() + calcIva()).toFixed(2);
+    return parseFloat(subTotal() + parseFloat(calcIva())).toFixed(2);
   };
 
   const calcItemCart = () => {
