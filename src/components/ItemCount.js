@@ -1,3 +1,4 @@
+import { parse } from "@fortawesome/fontawesome-svg-core";
 import React, { useContext, useState } from "react";
 import "../css/ItemCount.css";
 import { CartContext } from "./CartContext";
@@ -5,23 +6,24 @@ import { CartContext } from "./CartContext";
 const ItemCount = ({ stock, onAddCart }) => {
   const test = useContext(CartContext);
   const [istock, setStock] = useState(parseInt(stock));
-  const [count, setCount] = useState(1);
+
+  const [count, setCount] = useState(0);
   const [state, setState] = useState(true);
 
   console.log("itemcount:", istock);
 
   const increment = () => {
-    if (istock === 0) {
+    if (parseInt(stock) === 0 || count >= parseInt(stock)) {
       setState(true);
     } else {
       setState(true);
       setCount(count + 1);
-      setStock(istock - 1);
+      setStock(parseInt(stock) - count - 1);
     }
   };
 
   const decrement = () => {
-    if (istock >= 5 && count <= 1) {
+    if (istock > parseInt(stock) || count <= 0) {
       setState(true);
     } else {
       setCount(count - 1);
@@ -58,7 +60,7 @@ const ItemCount = ({ stock, onAddCart }) => {
           readOnly
           onClick={() => increment()}
         />
-        <p>Stock Disponible: {istock}</p>
+        {count > 0 ? <p>Stock Disponible: {istock}</p> : <p></p>}
 
         {count > 0 ? (
           <input
@@ -66,7 +68,7 @@ const ItemCount = ({ stock, onAddCart }) => {
             type="submit"
             name="inputname"
             value="Agregar al Carrito"
-            onClick={() => onAddCart(count)}
+            onClick={() => onAddCart(count, istock)}
           />
         ) : (
           <input

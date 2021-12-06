@@ -76,6 +76,7 @@ const Cart = () => {
                 <h4 className="titleItem">Producto : {item.titleItem}</h4>
                 <h5 className="titleItem">Cantidad : {item.qtyItem} </h5>
                 <h5 className="titleItem">Precio : {item.offerItem} x U. </h5>
+                <p>Stock Restante : {item.stockItem}</p>
                 <h5 className="titleItem">
                   Subtotal: {test.totalItems(item.idItem)}
                 </h5>

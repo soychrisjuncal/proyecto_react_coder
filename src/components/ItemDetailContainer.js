@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../css/ItemDetailContainer.css";
 import ItemDetail from "./ItemDetail";
-import loader from "../assets/load.gif";
+// import loader from "../assets/load.gif";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import { useParams } from "react-router";
