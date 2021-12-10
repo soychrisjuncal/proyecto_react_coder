@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import "../css/CartWidget.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircle, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { CartContext } from "./CartContext";
 
 const CartWidget = () => {

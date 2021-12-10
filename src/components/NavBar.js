@@ -5,6 +5,7 @@ import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
 import CartWidget from "./CartWidget";
 
 import { Link } from "react-router-dom";
+import Users from "./Users.js";
 
 const NavBar = () => {
   return (
@@ -42,6 +43,8 @@ const NavBar = () => {
             <Nav.Link href="#link">Contacto</Nav.Link>
           </Nav>
         </Navbar.Collapse>
+
+        <Users />
 
         <Link to="/cart">
           <CartWidget />

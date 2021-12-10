@@ -1,3 +1,4 @@
+import { updateCurrentUser } from "firebase/auth";
 import React, { createContext, useState } from "react";
 export const CartContext = createContext();
 
@@ -30,7 +31,7 @@ const CartContextProvider = ({ children }) => {
   };
 
   const deleteItem = (id) => {
-    let result = cartList.filter((item) => item.idItem != id);
+    let result = cartList.filter((item) => item.idItem !== id);
     setCartList(result);
   };
 
@@ -77,6 +78,7 @@ const CartContextProvider = ({ children }) => {
           calcIva,
           calcTotal,
           calcItemCart,
+          updateCurrentUser,
         }}
       >
         {children}

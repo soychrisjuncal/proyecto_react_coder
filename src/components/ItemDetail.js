@@ -13,6 +13,7 @@ const ItemDetail = ({
   offerPrice,
   stock,
   cuotas,
+  currentUser,
 }) => {
   const [itemCount, setItemCount] = useState(0);
   const test = useContext(CartContext);
@@ -28,7 +29,7 @@ const ItemDetail = ({
     alert("you rest " + reStock);
     console.log(reStock);
     setItemStock(reStock);
-    test.addToCart(id, img, title, offerPrice, reStock, qty);
+    test.addToCart(id, img, title, offerPrice, reStock, qty, currentUser);
   };
   return (
     <>

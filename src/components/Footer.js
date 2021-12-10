@@ -7,10 +7,20 @@ const Footer = () => {
       <div className="pepe">
         <ul>
           <li>
-            <a href="">Facebook</a>
+            <a
+              href="https://www.facebook.com/KiwiBoards-107433710949007/"
+              target="_blank"
+            >
+              Facebook
+            </a>
           </li>
           <li>
-            <a href="">Instagram</a>
+            <a
+              href="https://www.instagram.com/kiwi.boards/?hl=es-la"
+              target="_blank"
+            >
+              Instagram
+            </a>
           </li>
         </ul>
       </div>

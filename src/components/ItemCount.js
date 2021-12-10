@@ -1,4 +1,3 @@
-import { parse } from "@fortawesome/fontawesome-svg-core";
 import React, { useContext, useState } from "react";
 import "../css/ItemCount.css";
 import { CartContext } from "./CartContext";
@@ -6,7 +5,6 @@ import { CartContext } from "./CartContext";
 const ItemCount = ({ stock, onAddCart }) => {
   const test = useContext(CartContext);
   const [istock, setStock] = useState(parseInt(stock));
-
   const [count, setCount] = useState(0);
   const [state, setState] = useState(true);
 

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "../css/Cart.css";
 import { CartContext } from "./CartContext";
@@ -10,46 +10,59 @@ import {
   increment,
 } from "firebase/firestore";
 import db from "../utils/firebaseConfig";
+import { updateCurrentUser } from "firebase/auth";
+import "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+} from "firebase/auth";
 
 const Cart = () => {
   const test = useContext(CartContext);
 
   const createOrder = () => {
-    let order = {
-      buyer: {
-        name: "Admin",
-        email: "admin@admin.com.ar",
-        phone: "123456789",
-      },
-      item: test.cartList.map((item) => ({
-        id: item.idItem,
-        title: item.titleItem,
-        price: item.offerItem,
-        stock: item.stockItem,
-        qty: item.qtyItem,
-      })),
-      total: parseFloat(test.calcTotal()),
-    };
-    console.log(order);
+    if (test.currentUser > 0) {
+      console.log("test.c");
+    } else {
+      let order = {
+        buyer: {
+          name: "Admin",
+          email: "admin@admin.com.ar",
+          phone: "123456789",
+        },
+        item: test.cartList.map((item) => ({
+          id: item.idItem,
+          title: item.titleItem,
+          price: item.offerItem,
+          stock: item.stockItem,
+          qty: item.qtyItem,
+        })),
+        total: parseFloat(test.calcTotal()),
+      };
+      console.log(order);
 
-    const orderInFireS = async () => {
-      const newOrderRef = doc(collection(db, "orders"));
-      await setDoc(newOrderRef, order);
-      return newOrderRef;
-    };
+      const orderInFireS = async () => {
+        const newOrderRef = doc(collection(db, "orders"));
+        await setDoc(newOrderRef, order);
+        return newOrderRef;
+      };
 
-    orderInFireS()
-      .then((res) => alert(`Compra Confirmada! Su id de compra es: ${res.id}`))
-      .catch((err) => console.log(err));
+      orderInFireS()
+        .then((res) =>
+          alert(`Compra Confirmada! Su id de compra es: ${res.id}`)
+        )
+        .catch((err) => console.log(err));
 
-    test.cartList.forEach(async (item) => {
-      const itemRef = doc(db, "productos", item.idItem);
-      await updateDoc(itemRef, {
-        stock: increment(-item.qtyItem),
+      test.cartList.forEach(async (item) => {
+        const itemRef = doc(db, "productos", item.idItem);
+        await updateDoc(itemRef, {
+          stock: increment(-item.qtyItem),
+        });
       });
-    });
 
-    test.removeAll();
+      test.removeAll();
+    }
   };
 
   // console.log("cart", test);

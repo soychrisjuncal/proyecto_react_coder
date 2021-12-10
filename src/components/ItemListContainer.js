@@ -7,7 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useParams } from "react-router";
 import { firestoreFetch } from "../utils/firestoreFetch";
 
-const ItemListContainer = ({ bienvenida, botonRedes }) => {
+const ItemListContainer = ({ bienvenida }) => {
   const [datos, setArrayDatos] = useState([]);
 
   const { idCategory } = useParams();
@@ -27,19 +27,9 @@ const ItemListContainer = ({ bienvenida, botonRedes }) => {
         </div>
       ) : (
         <div className="loader">
-          <img src={loader} />
+          <img src={loader} alt="loading de carga de datos" />
         </div>
       )}
-
-      <p>Tienda Online en Construcción.</p>
-      <a
-        className="App-link"
-        href="https://www.instagram.com/kiwi.boards/?hl=es-la"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        {botonRedes}
-      </a>
     </div>
   );
 };
