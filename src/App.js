@@ -10,41 +10,45 @@ import ItemDetailContainer from "./components/ItemDetailContainer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Cart from "./components/Cart";
 import CartContextProvider from "./components/CartContext";
+import UserProvider from "./components/UserProvider";
+
 
 function App() {
   return (
-    <CartContextProvider>
-      <BrowserRouter>
-        <NavBar />
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <ItemListContainer
-                bienvenida="BIENVENIDOS A KIWI"
-                botonRedes="Visita Nuestras Redes"
-              />
-            }
-          />
-          <Route
-            path="/category/:idCategory"
-            element={
-              <ItemListContainer
-                bienvenida="BIENVENIDOS A KIWI"
-                botonRedes="Visita Nuestras Redes"
-              />
-            }
-          />
-          <Route
-            path="/itemDetail/:idItem"
-            element={<ItemDetailContainer detalle="BIENVENIDOS A KIWI" />}
-          />
-          <Route path="/cart" element={<Cart />} />
-        </Routes>
+    <UserProvider>
+      <CartContextProvider>
+        <BrowserRouter>
+          <NavBar />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <ItemListContainer
+                  bienvenida="BIENVENIDOS A KIWI"
+                  botonRedes="Visita Nuestras Redes"
+                />
+              }
+            />
+            <Route
+              path="/category/:idCategory"
+              element={
+                <ItemListContainer
+                  bienvenida="BIENVENIDOS A KIWI"
+                  botonRedes="Visita Nuestras Redes"
+                />
+              }
+            />
+            <Route
+              path="/itemDetail/:idItem"
+              element={<ItemDetailContainer detalle="BIENVENIDOS A KIWI" />}
+            />
+            <Route path="/cart" element={<Cart />} />
+          </Routes>
 
-        <Footer />
-      </BrowserRouter>
-    </CartContextProvider>
+          <Footer />
+        </BrowserRouter>
+      </CartContextProvider>
+    </UserProvider>
   );
 }
 

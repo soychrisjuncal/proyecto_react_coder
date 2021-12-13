@@ -10,26 +10,21 @@ import {
   increment,
 } from "firebase/firestore";
 import db from "../utils/firebaseConfig";
-import { updateCurrentUser } from "firebase/auth";
 import "firebase/auth";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  onAuthStateChanged,
-} from "firebase/auth";
+import { UserContext } from "./UserProvider";
 
 const Cart = () => {
   const test = useContext(CartContext);
-
+  const { currentUser } = useContext(UserContext);
   const createOrder = () => {
-    if (test.currentUser > 0) {
-      console.log("test.c");
+    if (currentUser == null) {
+      alert("Debera iniciar sesion o registrarse");
     } else {
       let order = {
         buyer: {
-          name: "Admin",
-          email: "admin@admin.com.ar",
-          phone: "123456789",
+          name: "admin ",
+          email: currentUser.email,
+          phone: "1130540430",
         },
         item: test.cartList.map((item) => ({
           id: item.idItem,
