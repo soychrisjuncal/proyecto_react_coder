@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/soychrisjuncal.github.io/tiendaKiwi-FernandezJuncal/static/css/main.82f9da52.chunk.css",
-    "main.js": "/soychrisjuncal.github.io/tiendaKiwi-FernandezJuncal/static/js/main.d53fd9f7.chunk.js",
-    "main.js.map": "/soychrisjuncal.github.io/tiendaKiwi-FernandezJuncal/static/js/main.d53fd9f7.chunk.js.map",
-    "runtime-main.js": "/soychrisjuncal.github.io/tiendaKiwi-FernandezJuncal/static/js/runtime-main.3c1149c6.js",
-    "runtime-main.js.map": "/soychrisjuncal.github.io/tiendaKiwi-FernandezJuncal/static/js/runtime-main.3c1149c6.js.map",
-    "static/css/2.31e01531.chunk.css": "/soychrisjuncal.github.io/tiendaKiwi-FernandezJuncal/static/css/2.31e01531.chunk.css",
-    "static/js/2.7df075cd.chunk.js": "/soychrisjuncal.github.io/tiendaKiwi-FernandezJuncal/static/js/2.7df075cd.chunk.js",
-    "static/js/2.7df075cd.chunk.js.map": "/soychrisjuncal.github.io/tiendaKiwi-FernandezJuncal/static/js/2.7df075cd.chunk.js.map",
-    "static/js/3.f826d62b.chunk.js": "/soychrisjuncal.github.io/tiendaKiwi-FernandezJuncal/static/js/3.f826d62b.chunk.js",
-    "static/js/3.f826d62b.chunk.js.map": "/soychrisjuncal.github.io/tiendaKiwi-FernandezJuncal/static/js/3.f826d62b.chunk.js.map",
-    "index.html": "/soychrisjuncal.github.io/tiendaKiwi-FernandezJuncal/index.html",
-    "static/css/2.31e01531.chunk.css.map": "/soychrisjuncal.github.io/tiendaKiwi-FernandezJuncal/static/css/2.31e01531.chunk.css.map",
-    "static/css/main.82f9da52.chunk.css.map": "/soychrisjuncal.github.io/tiendaKiwi-FernandezJuncal/static/css/main.82f9da52.chunk.css.map",
-    "static/js/2.7df075cd.chunk.js.LICENSE.txt": "/soychrisjuncal.github.io/tiendaKiwi-FernandezJuncal/static/js/2.7df075cd.chunk.js.LICENSE.txt",
-    "static/media/load.abf997af.gif": "/soychrisjuncal.github.io/tiendaKiwi-FernandezJuncal/static/media/load.abf997af.gif"
+    "main.css": "/soychrisjuncal.github.io/entrega-final/static/css/main.82f9da52.chunk.css",
+    "main.js": "/soychrisjuncal.github.io/entrega-final/static/js/main.d53fd9f7.chunk.js",
+    "main.js.map": "/soychrisjuncal.github.io/entrega-final/static/js/main.d53fd9f7.chunk.js.map",
+    "runtime-main.js": "/soychrisjuncal.github.io/entrega-final/static/js/runtime-main.bbffeb08.js",
+    "runtime-main.js.map": "/soychrisjuncal.github.io/entrega-final/static/js/runtime-main.bbffeb08.js.map",
+    "static/css/2.31e01531.chunk.css": "/soychrisjuncal.github.io/entrega-final/static/css/2.31e01531.chunk.css",
+    "static/js/2.8b3a01be.chunk.js": "/soychrisjuncal.github.io/entrega-final/static/js/2.8b3a01be.chunk.js",
+    "static/js/2.8b3a01be.chunk.js.map": "/soychrisjuncal.github.io/entrega-final/static/js/2.8b3a01be.chunk.js.map",
+    "static/js/3.f826d62b.chunk.js": "/soychrisjuncal.github.io/entrega-final/static/js/3.f826d62b.chunk.js",
+    "static/js/3.f826d62b.chunk.js.map": "/soychrisjuncal.github.io/entrega-final/static/js/3.f826d62b.chunk.js.map",
+    "index.html": "/soychrisjuncal.github.io/entrega-final/index.html",
+    "static/css/2.31e01531.chunk.css.map": "/soychrisjuncal.github.io/entrega-final/static/css/2.31e01531.chunk.css.map",
+    "static/css/main.82f9da52.chunk.css.map": "/soychrisjuncal.github.io/entrega-final/static/css/main.82f9da52.chunk.css.map",
+    "static/js/2.8b3a01be.chunk.js.LICENSE.txt": "/soychrisjuncal.github.io/entrega-final/static/js/2.8b3a01be.chunk.js.LICENSE.txt",
+    "static/media/load.abf997af.gif": "/soychrisjuncal.github.io/entrega-final/static/media/load.abf997af.gif"
   },
   "entrypoints": [
-    "static/js/runtime-main.3c1149c6.js",
+    "static/js/runtime-main.bbffeb08.js",
     "static/css/2.31e01531.chunk.css",
-    "static/js/2.7df075cd.chunk.js",
+    "static/js/2.8b3a01be.chunk.js",
     "static/css/main.82f9da52.chunk.css",
     "static/js/main.d53fd9f7.chunk.js"
   ]
