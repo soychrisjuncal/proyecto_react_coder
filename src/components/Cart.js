@@ -10,6 +10,7 @@ import {
   increment,
 } from "firebase/firestore";
 import db from "../utils/firebaseConfig";
+import { ToastContainer, toast } from "react-toastify";
 import "firebase/auth";
 import { UserContext } from "./UserProvider";
 
@@ -35,7 +36,6 @@ const Cart = () => {
         })),
         total: parseFloat(test.calcTotal()),
       };
-      console.log(order);
 
       const orderInFireS = async () => {
         const newOrderRef = doc(collection(db, "orders"));
@@ -60,57 +60,67 @@ const Cart = () => {
     }
   };
 
-  // console.log("cart", test);
-  // console.log(test.cartList);
-  // console.log(test.cartList.imgItem);
-
   return (
     <>
+      <ToastContainer />
+
       <h2 className="titleItem text-center">Carrito de Compras</h2>
-      <div className="d-flex justify-content-center">
-        <Link to="/">
-          <button className="btn-dark btnContinue">CONTINUE SHOPPING</button>
-        </Link>
-        <button className="btn-dark btnVaciar" onClick={test.removeAll}>
-          Vaciar Carrito
-        </button>
-      </div>
-      <div className="d-flex flex-row">
-        <div>
-          {test.cartList.map((item) => (
-            <div className="d-flex flex-column">
-              <div className="d-flex flex-row text-left">
-                <img src={item.imgItem} className="imgItem" alt="producto" />
-                <h4 className="titleItem">Producto : {item.titleItem}</h4>
-                <h5 className="titleItem">Cantidad : {item.qtyItem} </h5>
-                <h5 className="titleItem">Precio : {item.offerItem} x U. </h5>
-                <p>Stock Restante : {item.stockItem}</p>
-                <h5 className="titleItem">
-                  Subtotal: {test.totalItems(item.idItem)}
-                </h5>
+      <div className="contenedor">
+        <div className="d-flex justify-content-center">
+          <Link to="/">
+            <button className="btn-dark btnContinue btnSign">
+              CONTINUE SHOPPING
+            </button>
+          </Link>
+          <button
+            className="btn-dark btnVaciar btnSign"
+            onClick={test.removeAll}
+          >
+            Vaciar Carrito
+          </button>
+        </div>
+        <div className=" contenedorTotal">
+          <div className="col-12 col-md-8">
+            {test.cartList.map((item) => (
+              <div className="d-flex flex-column ">
+                <div className="contenedorList text-left">
+                  <img src={item.imgItem} className="imgItem" alt="producto" />
+                  <h4 className="titleItem">Producto : {item.titleItem}</h4>
+                  <h5 className="titleItem">Cantidad : {item.qtyItem} </h5>
+                  <h5 className="titleItem">Precio : {item.offerItem} x U. </h5>
+                  <h5 className="titleItem mt-1">
+                    Stock Disponible : {item.stockItem}
+                  </h5>
+                  <h5 className="titleItem">
+                    Subtotal: ${test.totalItems(item.idItem)}
+                  </h5>
+                  <button
+                    className="btn-dark btnBorrar btnSign"
+                    onClick={() => test.deleteItem(item.idItem, toast)}
+                  >
+                    Eliminar
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="col-12 col-md-4">
+            {test.cartList.length > 0 && (
+              <div className="d-flex flex-column justify-content-center contenedorResumen">
+                <h4 className="p-2 text-center">Resumen de Compra</h4>
+                <h5 className="p-3 text-left">Subtotal: {test.subTotal()}</h5>
+                <h5 className="p-3 text-left">IVA 21%: {test.calcIva()}</h5>
+                <h3 className="p-3 text-left">TOTAL: {test.calcTotal()}</h3>
                 <button
-                  className="btn-dark btnBorrar"
-                  onClick={() => test.deleteItem(item.idItem)}
+                  onClick={createOrder}
+                  className="btn-dark btnConfirmar btnSign"
                 >
-                  Eliminar
+                  Confirmar Compra
                 </button>
               </div>
-            </div>
-          ))}
-        </div>
-
-        <div>
-          {test.cartList.length > 0 && (
-            <div className="d-flex flex-column justify-content-center contenedorResumen">
-              <h4 className="p-2 text-center">Resumen de Compra</h4>
-              <h5 className="p-3 text-left">Subtotal: {test.subTotal()}</h5>
-              <h5 className="p-3 text-left">IVA 21%: {test.calcIva()}</h5>
-              <h3 className="p-3 text-left">TOTAL: {test.calcTotal()}</h3>
-              <button onClick={createOrder} className="btn-dark btnConfirmar">
-                Confirmar Compra
-              </button>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </div>
     </>

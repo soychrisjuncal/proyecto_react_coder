@@ -5,7 +5,10 @@ const ItemList = ({ productos }) => {
   return (
     <div className="flex-wrap d-flex flex-row w-100 justify-content-center">
       {productos.map((dato) => (
-        <div key={dato.id} className="col-4 d-flex justify-content-center">
+        <div
+          key={dato.id}
+          className="col-md-4 col-12 d-flex justify-content-center"
+        >
           <Item
             id={dato.id}
             img={dato.img}

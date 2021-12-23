@@ -16,7 +16,7 @@
     margin: 1rem;
 }
 .btnBorrar {
-    height: 7vh;
+   
     padding: 0 1rem;
     align-self: center;
 }
@@ -41,4 +41,37 @@
     border-radius: 30px;
     box-shadow: -2px 1px 72px -21px rgba(0,0,0,0.68);
     border: 2px solid black;
+}
+
+.contenedor {
+    margin-top: 100px;
+}
+
+.contenedorTotal{
+    display: flex;
+    flex-direction: row;
+}
+
+@media screen and (max-width: 767px) {
+    .contenedorTotal{
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+    
+}
+
+.contenedorList {
+    display: flex;
+    flex-direction: row;
+
+}
+
+@media screen and (max-width: 767px) {
+    .contenedorList{
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+    
 }

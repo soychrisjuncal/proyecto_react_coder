@@ -25,3 +25,24 @@ ul {
     justify-content: center;
     margin-bottom: 0 !important;
 }
+
+.imagenCopy {
+    width: 25%;
+}
+
+.btnFb, .btnIg {
+    text-decoration: none;
+    color: black;
+    
+
+
+}
+
+#ig,#fb {
+    font-size: 40px;
+}
+
+.copy, .redes, .copyFirma{
+    width: 33%;
+}
+

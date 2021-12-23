@@ -3,7 +3,7 @@ import Button from "@restart/ui/esm/Button";
 import { Modal } from "react-bootstrap";
 import "firebase/auth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import { faSignOutAlt, faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import { UserContext } from "./UserProvider";
 import "../css/User.css";
 
@@ -15,7 +15,10 @@ function Users() {
   const [show2, setShow2] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const handleShow2 = () => setShow2(true);
+  const handleShow2 = () => {
+    handleClose();
+    setShow2(true);
+  };
   const handleClose2 = () => setShow2(false);
 
   return (
@@ -24,13 +27,19 @@ function Users() {
         <>
           <div>
             <Button
-              className="m-4 px-2 btn-dark"
+              className="m-4 px-2 btn-dark btnSign"
               variant="primary"
               onClick={handleShow}
             >
-              Sign Up
+              {" "}
+              <FontAwesomeIcon
+                icon={faUserPlus}
+                id="logout"
+                onClick={() => logOut()}
+              ></FontAwesomeIcon>{" "}
             </Button>
             <Modal
+              id="content"
               show={show}
               onHide={handleClose}
               backdrop="static"
@@ -41,76 +50,100 @@ function Users() {
               </Modal.Header>
               <Modal.Body>
                 <div>
-                  <label htmlFor="email"> Correo Electronico </label>
-                  <input
-                    type="email"
-                    id="email"
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                  <label htmlFor="password" id="password">
-                    {" "}
-                    Contraseña{" "}
-                  </label>
-                  <input
-                    type="password"
-                    id="password"
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                  <button onClick={() => submit(email, password)}>
-                    Registrarse
-                  </button>
+                  <div className="d-flex flex-row justify-content-center align-items-center">
+                    <label className="m-0" htmlFor="email">
+                      {" "}
+                      Correo Electronico{" "}
+                    </label>
+                    <input
+                      className="m-4 px-2 btnInput"
+                      type="email"
+                      id="email"
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                  </div>
+                  <br />
+                  <div className="d-flex flex-row justify-content-center align-items-center">
+                    <label htmlFor="password" id="password">
+                      {" "}
+                      Contraseña{" "}
+                    </label>
+                    <input
+                      className="m-2 px-2 btnInput"
+                      type="password"
+                      id="password"
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                  </div>
+                  <br />
+                  <div className="d-flex flex-row justify-content-center align-items-center">
+                    <button
+                      className=" px-2 btn-dark btnSign"
+                      onClick={() => submit(email, password)}
+                    >
+                      Registrarse
+                    </button>
+                  </div>
+
+                  <div className="d-flex flex-row justify-content-center align-items-center">
+                    <p className="m-0">Ya tenes un Usuario?</p>{" "}
+                    <Button
+                      className="m-4 px-2 btn-dark btnSign"
+                      variant="primary"
+                      onClick={handleShow2}
+                    >
+                      Log In
+                    </Button>
+                  </div>
                 </div>
               </Modal.Body>
             </Modal>{" "}
           </div>
-
-          <div>
-            <Button
-              className="m-4 px-2 btn-dark"
-              variant="primary"
-              onClick={handleShow2}
-            >
-              Log In
-            </Button>
-            <Modal
-              show={show2}
-              onHide={handleClose2}
-              backdrop="static"
-              keyboard={false}
-            >
-              <Modal.Header closeButton>
-                <Modal.Title>Log In</Modal.Title>
-              </Modal.Header>
-              <Modal.Body>
-                <div>
-                  <label htmlFor="email"> Correo Electronico </label>
+          <Modal
+            id="content2"
+            show={show2}
+            onHide={handleClose2}
+            backdrop="static"
+            keyboard={false}
+          >
+            <Modal.Header closeButton>
+              <Modal.Title>Log In</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <div>
+                <div className="d-flex flex-row justify-content-center align-items-center">
+                  <label htmlFor="email2"> Correo Electronico </label>
                   <input
-                    type="email"
-                    id="email"
+                    className="m-4 px-2 btnInput"
+                    type="email2"
+                    id="email2"
                     onChange={(e) => setEmail(e.target.value)}
                   />
-                  <label htmlFor="password" id="password">
+                </div>
+                <div className="d-flex flex-row justify-content-center align-items-center">
+                  <label htmlFor="password2" id="password2">
                     {" "}
                     Contraseña{" "}
                   </label>
                   <input
+                    className="m-4 px-2 btnInput"
                     type="password"
-                    id="password"
+                    id="password2"
                     onChange={(e) => setPassword(e.target.value)}
                   />
-                  <button onClick={() => signIn(email, password)}>
+                </div>
+                <div className="d-flex flex-row justify-content-center align-items-center">
+                  <button
+                    className="m-4 px-2 btn-dark btnSign"
+                    onClick={() => signIn(email, password)}
+                  >
                     iniciar Sesion
                   </button>
                 </div>
-              </Modal.Body>
-              {/* <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>
-          Close
-        </Button>
-        <Button variant="primary">Understood</Button>
-      </Modal.Footer> */}
-            </Modal>{" "}
-          </div>
+              </div>
+            </Modal.Body>
+          </Modal>{" "}
+          <div></div>
         </>
       ) : (
         <div className="login">
@@ -119,6 +152,7 @@ function Users() {
             <FontAwesomeIcon
               icon={faSignOutAlt}
               id="logout"
+              className="iconLogout"
               onClick={() => logOut()}
             ></FontAwesomeIcon>{" "}
           </div>

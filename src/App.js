@@ -11,7 +11,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Cart from "./components/Cart";
 import CartContextProvider from "./components/CartContext";
 import UserProvider from "./components/UserProvider";
-
+import Home from "./components/Home";
+import Contacto from "./components/Contacto";
 
 function App() {
   return (
@@ -20,28 +21,17 @@ function App() {
         <BrowserRouter>
           <NavBar />
           <Routes>
-            <Route
-              path="/"
-              element={
-                <ItemListContainer
-                  bienvenida="BIENVENIDOS A KIWI"
-                  botonRedes="Visita Nuestras Redes"
-                />
-              }
-            />
+            <Route path="/home" element={<Home />} />
+            <Route path="/" element={<ItemListContainer />} />
             <Route
               path="/category/:idCategory"
-              element={
-                <ItemListContainer
-                  bienvenida="BIENVENIDOS A KIWI"
-                  botonRedes="Visita Nuestras Redes"
-                />
-              }
+              element={<ItemListContainer />}
             />
             <Route
               path="/itemDetail/:idItem"
               element={<ItemDetailContainer detalle="BIENVENIDOS A KIWI" />}
             />
+            <Route path="/contacto" element={<Contacto />} />
             <Route path="/cart" element={<Cart />} />
           </Routes>
 

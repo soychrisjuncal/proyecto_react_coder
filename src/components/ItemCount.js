@@ -8,8 +8,6 @@ const ItemCount = ({ stock, onAddCart }) => {
   const [count, setCount] = useState(0);
   const [state, setState] = useState(true);
 
-  console.log("itemcount:", istock);
-
   const increment = () => {
     if (parseInt(stock) === 0 || count >= parseInt(stock)) {
       setState(true);

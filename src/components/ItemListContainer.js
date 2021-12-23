@@ -6,8 +6,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import { useParams } from "react-router";
 import { firestoreFetch } from "../utils/firestoreFetch";
+import CarrouselItemList from "./CarrouselItemList";
 
-const ItemListContainer = ({ bienvenida }) => {
+const ItemListContainer = () => {
   const [datos, setArrayDatos] = useState([]);
 
   const { idCategory } = useParams();
@@ -19,12 +20,16 @@ const ItemListContainer = ({ bienvenida }) => {
   }, [idCategory]);
 
   return (
-    <div className="">
-      <h1 className="title"> {bienvenida} </h1>
+    <div>
       {datos.length > 0 ? (
-        <div>
-          <ItemList productos={datos} />
-        </div>
+        <>
+          <div>
+            <CarrouselItemList />
+          </div>
+          <div>
+            <ItemList productos={datos} />
+          </div>
+        </>
       ) : (
         <div className="loader">
           <img src={loader} alt="loading de carga de datos" />

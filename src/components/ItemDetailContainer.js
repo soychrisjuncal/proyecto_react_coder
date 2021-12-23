@@ -16,7 +16,6 @@ const ItemDetailContainer = ({ detalle }) => {
     firestoreDetailFetch(idItem)
       .then((res) => {
         setDatos(res);
-        console.log(res);
       })
       .catch((err) => console.log(err));
   }, [idItem]);

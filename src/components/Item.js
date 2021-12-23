@@ -2,6 +2,7 @@ import React from "react";
 import "../css/Item.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
+import { Carousel } from "react-bootstrap";
 
 function Item({
   id,
@@ -19,49 +20,24 @@ function Item({
       <div className="m-4 contenedor-producto row justify-content-center">
         <Link to={`/itemDetail/${id}`} className="link">
           <div className="producto-info">
-            <div className="artc-img-item">
-              <div
-                id="carouselExampleControls"
-                className="carousel slide"
-                data-ride="carousel"
-              >
-                <div className="carousel-inner">
-                  <div className="carousel-item active hover ">
-                    <img src={img} className="d-block w-100" alt="producto" />
-                  </div>
-                  <div className="carousel-item">
-                    <img src={img2} className="d-block w-100" alt="producto" />
-                  </div>
-                  <div className="carousel-item">
-                    <img src={img3} className="d-block w-100" alt="producto" />
-                  </div>
-                </div>
-                <button
-                  className="carousel-control-prev"
-                  type="button"
-                  data-target="#carouselExampleControls"
-                  data-slide="prev"
-                >
-                  <span
-                    className="carousel-control-prev-icon"
-                    aria-hidden="true"
-                  ></span>
-                  <span className="sr-only">Previous</span>
-                </button>
-                <button
-                  className="carousel-control-next"
-                  type="button"
-                  data-target="#carouselExampleControls"
-                  data-slide="next"
-                >
-                  <span
-                    className="carousel-control-next-icon"
-                    aria-hidden="true"
-                  ></span>
-                  <span className="sr-only">Next</span>
-                </button>
-              </div>
-            </div>
+            <Carousel fade>
+              <Carousel.Item className="borderR">
+                <img
+                  className="d-block w-100 borderR"
+                  src={img}
+                  alt="First slide"
+                  fluid="true"
+                />
+              </Carousel.Item>
+              <Carousel.Item className="borderR">
+                <img
+                  className="d-block w-100 borderR"
+                  src={img2}
+                  alt="Second slide"
+                  fluid="true"
+                />
+              </Carousel.Item>
+            </Carousel>
           </div>
           <div className="item-info-producto">
             <h4>{title}</h4>
@@ -69,14 +45,18 @@ function Item({
             <div className="producto_precio">
               <p>
                 {" "}
-                <del>${listPrice}</del> ${offerPrice}
+                <del className="precioLista">${listPrice}</del>{" "}
+                <span className="precioFinal">${offerPrice}</span>
               </p>
-              <p>12 cuotas sin Interés de ${cuotas}</p>
+              <p>
+                12 cuotas sin Interés de{" "}
+                <span className="cuotas">${cuotas}</span>
+              </p>
             </div>
             <div className="contenedorBtn">
               <Link to={`/itemDetail/${id}`}>
                 {" "}
-                <button className="btnComprar">Comprar</button>
+                <button className="btnComprar btnSign">Comprar</button>
               </Link>
             </div>
           </div>

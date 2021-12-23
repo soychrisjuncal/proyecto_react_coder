@@ -30,9 +30,20 @@ const CartContextProvider = ({ children }) => {
     setCartList([]);
   };
 
-  const deleteItem = (id) => {
+  const deleteItem = (id, toast) => {
     let result = cartList.filter((item) => item.idItem !== id);
     setCartList(result);
+    toast.error("product removed", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      icon: "❌",
+      theme: "colored",
+    });
   };
 
   const totalItems = (idItem) => {

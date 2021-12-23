@@ -3,6 +3,8 @@ import ItemCount from "./ItemCount";
 import "../css/ItemDetail.css";
 import { Link } from "react-router-dom";
 import { CartContext } from "./CartContext";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ItemDetail = ({
   id,
@@ -27,27 +29,43 @@ const ItemDetail = ({
       alert("Has superado la cantidad de stock disponible");
     }
     alert("you rest " + reStock);
-    console.log(reStock);
+
     setItemStock(reStock);
     test.addToCart(id, img, title, offerPrice, reStock, qty, currentUser);
+    toast.success("You have selected " + qty + " items.", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
   };
   return (
     <>
-      <div className="contenedor-padre">
-        <div className="contenedor-imagen">
-          <img src={img} className="w-100" alt="producto" />
+      <ToastContainer />
+      <div className="contenedor-padre flex-wrap">
+        <div className="col-md-6 col-12 contenedor-imagen">
+          <img src={img} className="imgDetail" alt="producto" />
         </div>
 
-        <div className="item-info-producto">
-          <h2 className="titulo">{title}</h2>
+        <div className="col-md-6 col-12 item-info-producto">
+          {/* <h2 className="titulo">{title}</h2> */}
 
           <div className="description">{description}</div>
           <div className="producto_precio">
             <p className="precio">
               {" "}
-              <del>${listPrice}</del> ${offerPrice}
+              Precio Final:{" "}
+              <del className="precioListaDetail">${listPrice}</del>{" "}
+              <span className="precioFinalDetail">${offerPrice}</span>
             </p>
-            <p>12 cuotas sin Interés de ${cuotas}</p>
+            <p>
+              12 cuotas sin Interés de{" "}
+              <span className="cuotasDetail">${cuotas}</span>{" "}
+            </p>
           </div>
           <div>
             {itemCount === 0 ? (
