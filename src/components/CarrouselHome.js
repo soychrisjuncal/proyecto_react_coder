@@ -9,7 +9,7 @@ function CarrouselHome() {
         <Carousel.Item>
           <img
             className="d-block w-100"
-            src="../assets/img/banner1.jpeg"
+            src="https://i.ibb.co/q00Xvy3/banner1.jpg"
             alt="First slide"
           />
         </Carousel.Item>
