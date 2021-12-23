@@ -19,11 +19,13 @@ Supervisado por el Profesor [Alex Marin Mendez](https://github.com/alexmarinmend
 
 ## Deployment 📦
 
-Este proyecto esta desarollado con tecnología del lado del cliente (Front End) y a su vez utilizando un Backend as a service como lo es Firebase para el almacenamiento de datos. Como fue desarrollado con la libreria ReactJS deberas realizar los siguientes pasos para poder correrlo correctamente, a saber:
+Este proyecto esta desarollado con tecnología del lado del cliente (Front End) y a su vez utilizando un Backend as a service como lo es Firebase para el almacenamiento de datos. 
 
-_correr el comando npm install en la terminal (Paquete node_modules)
-_seguido del comando npm install --save react-toastify (Paquete notificaciones emergentes)
-_por ultimo el comando npm start para correr la Web App en el navegador.
+Como fue desarrollado con la libreria ReactJS deberas realizar los siguientes pasos para poder correrlo correctamente, a saber:
+
+* correr el comando npm install en la terminal (Paquete node_modules)
+* seguido del comando npm install --save react-toastify (Paquete notificaciones emergentes)
+* por ultimo el comando npm start para correr la Web App en el navegador.
 
 ## Construido con 🛠️
 
