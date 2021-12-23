@@ -1,17 +1,19 @@
-import React from "react";
-import './CartWidget.css'
-
-
+import React, { useContext } from "react";
+import "../css/CartWidget.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { CartContext } from "./CartContext";
 
 const CartWidget = () => {
+  const test = useContext(CartContext);
+  return (
+    <>
+      <div className="d-flex flex-row">
+        <FontAwesomeIcon icon={faShoppingCart} id="carrito"></FontAwesomeIcon>{" "}
+        <div id="circle"> {test.calcItemCart()}</div>
+      </div>
+    </>
+  );
+};
 
-    return (
-        <a className="color" href=""><i className="CartWidget-card" class="fas fa-shopping-cart"></i></a>
-
-
-
-    );
-}
-
-
-export default CartWidget 
+export default CartWidget;

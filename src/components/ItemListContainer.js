@@ -1,29 +1,42 @@
-import React from "react"
-import logo from '../logo.png';
+import React, { useState, useEffect } from "react";
+import "../css/ItemListContainer.css";
+import ItemList from "./ItemList";
+import loader from "../assets/load.gif";
+import "bootstrap/dist/css/bootstrap.min.css";
 
+import { useParams } from "react-router";
+import { firestoreFetch } from "../utils/firestoreFetch";
+import CarrouselItemList from "./CarrouselItemList";
 
 const ItemListContainer = () => {
+  const [datos, setArrayDatos] = useState([]);
 
-return (
-<div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-        Tienda Online en Construcción.
-        </p>
-        <a
-          className="App-link"
-          href="https://www.instagram.com/kiwi.boards/?hl=es-la"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Visita Nuestras Redes
-        </a>
-      </header>
+  const { idCategory } = useParams();
+
+  useEffect(() => {
+    firestoreFetch(idCategory)
+      .then((res) => setArrayDatos(res))
+      .catch((err) => console.log(err));
+  }, [idCategory]);
+
+  return (
+    <div>
+      {datos.length > 0 ? (
+        <>
+          <div>
+            <CarrouselItemList />
+          </div>
+          <div>
+            <ItemList productos={datos} />
+          </div>
+        </>
+      ) : (
+        <div className="loader">
+          <img src={loader} alt="loading de carga de datos" />
+        </div>
+      )}
     </div>
+  );
+};
 
-)
-
-}
-
-export default ItemListContainer
+export default ItemListContainer;

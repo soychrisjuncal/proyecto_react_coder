@@ -1,6 +1,11 @@
+*{
+  font-family: 'Bebas Neue', cursive;
+}
+
+
 .App {
   text-align: center;
-  background-image: url('./fondo.png');
+
 background-size: cover;
   min-height: 100vh;
   display: flex;
@@ -14,12 +19,6 @@ background-size: cover;
 .App-logo {
   height: 60vmin;
   pointer-events: none;
-}
-
-
-
-.App-header {
-
 }
 
 .App-link {
