@@ -4,7 +4,7 @@
 
 <img src="https://i.ibb.co/BVJk7Gz/presentacion-OK.jpg">
 
-En este proyecto se accede al e-commerce de la marca Kiwi Boards, es un proyecto inicializado con el fin de recorrer y aprender sobre la Libreria ReactJS del curso de React JS - Carrero de Front End de Coderhouse.
+En este proyecto se accede al e-commerce de la marca Kiwi Boards, es un proyecto inicializado con el fin de recorrer y aprender sobre la Libreria ReactJS del curso de React JS - Carrera de Front End de Coderhouse.
 
 Supervisado por el Profesor [Alex Marin Mendez](https://github.com/alexmarinmendez).
 
