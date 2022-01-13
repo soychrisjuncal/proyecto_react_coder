@@ -50,4 +50,6 @@ Eres libre de analizar/estudiar/forkear/copiar/mejorar este proyecto. Se agradec
 
 
 ---
-<img src="https://i.ibb.co/qFg89P1/firma-Copy.png" />
+<div align="center">
+<img width="50%" src="https://i.ibb.co/qFg89P1/firma-Copy.png" />
+ <div>
